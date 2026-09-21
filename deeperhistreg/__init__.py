@@ -7,3 +7,5 @@ from .dhr_input_output import dhr_savers as savers
 
 from .dhr_deformation.apply_deformation import apply_deformation
 from .run import run_registration
+
+from .dhr_pipeline.in_memory import build_registration_parameters, register_and_warp_arrays
