@@ -90,16 +90,18 @@ def run(**config):
 
 parser = argparse.ArgumentParser(description="DeeperHistReg arguments")
 
-parser.add_argument('--source', type=str, default='/NAS145/liaolinbo/Data/免疫治疗省肿瘤/60例胃癌/CD31/', help="Path to the source image")
-parser.add_argument('--target', type=str, default='/NAS145/liaolinbo/Data/免疫治疗省肿瘤/60例胃癌/HE/', help="Path to the target image")
-parser.add_argument('--output', type=str, default='/NAS145/liaolinbo/Data/免疫治疗省肿瘤/60例胃癌/DHR/', help="Path to the output folder")
+parser.add_argument('--source', type=str, default='/NAS145/Data/免疫治疗省肿瘤/60例胃癌/CD31/', help="Path to the source image")
+parser.add_argument('--target', type=str, default='/NAS145/Data/免疫治疗省肿瘤/60例胃癌/HE/', help="Path to the target image")
+parser.add_argument('--output', type=str, default='/NAS145/Data/免疫治疗省肿瘤/60例胃癌/DHR/', help="Path to the output folder")
 args = parser.parse_args()
 if __name__ == "__main__":
     source_dir, target_dir, output_dir = args.source, args.target, args.output
     for slide in os.listdir(source_dir):
         if os.path.exists(os.path.join(args.source, slide)):
-            src = os.path.join(source_dir, slide)
-            target = os.path.join(target_dir, slide)
+            # src = os.path.join(source_dir, slide)
+            src = '/data12/jing/tmp/he/20-02764.tif'
+            # target = os.path.join(target_dir, slide)
+            target = '/data12/jing/tmp/he/20-02764.tif'
             output = output_dir
             tmp = os.path.join(output_dir, os.path.splitext(slide)[0])
             cfg = reg_config(src, target, output, tmp, gpu=0)
